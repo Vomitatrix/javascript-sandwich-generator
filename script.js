@@ -1,11 +1,11 @@
 const button = document.querySelector('button');
-let ingredientOne =   document.getElementById('ingredient-one');
-let ingredientTwo =   document.getElementById('ingredient-two');
+let ingredientOne = document.getElementById('ingredient-one');
+let ingredientTwo = document.getElementById('ingredient-two');
 let ingredientThree = document.getElementById('ingredient-three');
-let ingredientFour =  document.getElementById('ingredient-four');
+let ingredientFour = document.getElementById('ingredient-four');
 
 const protein = ['Turkey', 'Tuna', 'Pastrami', 'Chicken', 'Crab', 'Egg salad'];
-const veggie = ['Lettuce', 'Tomato', 'Avocado', 'Onion', 'Apple', 'Pickle'] ;
+const veggie = ['Lettuce', 'Tomato', 'Avocado', 'Onion', 'Apple', 'Pickle'];
 const other = ['Cheese', 'Dill', 'Salt and pepper', 'rollSauce', 'rollVeggie', 'rollProtein'];
 const sauce =['Mayo', 'Ketchup', 'Red wine vinegar', 'Mustard', 'Peanut butter', 'Chick-fil-A'];
 
@@ -19,22 +19,22 @@ function generateSandwich() {
     let rgnFour = Math.floor(Math.random() * 6);
     let selectionThree;
 
-    if (rgnThree == 3 || rgnThree == 4 || rgnThree == 5) {
-        rgnThree = Math.floor(Math.random() * 6);
-        
-        if (rgnThree == 3) {
-            selectionThree = sauce[rgnThree];
-        } else if (rgnThree == 4) {
-            selectionThree = veggie[rgnThree];
-        } else if (rgnThree == 5) {
-            selectionThree = protein[rgnThree];
-        }
-    } else {
-        selectionThree = other[rgnThree];
+    switch (rgnThree) {
+        case 3:
+            selectionThree = sauce[Math.floor(Math.random() * 6)];
+            break;
+        case 4:
+            selectionThree = veggie[Math.floor(Math.random() * 6)];
+            break;
+        case 5:
+            selectionThree = protein[Math.floor(Math.random() * 6)];
+            break;
+        default:
+            selectionThree = other[rgnThree];
     }
 
-    ingredientOne.textContent =   `- ${protein[rgnOne]}`;
-    ingredientTwo.textContent =   `- ${veggie[rgnTwo]}`;
+    ingredientOne.textContent = `- ${protein[rgnOne]}`;
+    ingredientTwo.textContent = `- ${veggie[rgnTwo]}`;
     ingredientThree.textContent = `- ${selectionThree}`;
-    ingredientFour.textContent =  `- ${sauce[rgnFour]}`;
+    ingredientFour.textContent = `- ${sauce[rgnFour]}`;
 }
